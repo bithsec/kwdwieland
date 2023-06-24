@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://kwd-wieland.at/kwdwieland/sitemap/sitemap-index.xml
+Host: https://kwd-wieland.at
