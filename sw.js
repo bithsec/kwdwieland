@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-79294c349a7a702d4410.js"
+    "url": "webpack-runtime-b03e083ecf2f3f4da157.js"
   },
   {
     "url": "framework-040e5be559c949d42e39.js"
@@ -36,18 +36,18 @@ self.__precacheManifest = [
     "url": "styles.820ddfb0ef61dcbf38c2.css"
   },
   {
-    "url": "app-146cc2bd8db990ea5363.js"
+    "url": "app-70c8e6dd5e28a3daa8ae.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "9c6615142e8c71a887533132b47357d2"
+    "revision": "37baf57250c3f0f3a98436169b2d0527"
   },
   {
     "url": "polyfill-3f135d42a9a27cb37adc.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "11b490c5d305d2bc0aad63ea7be414f7"
+    "revision": "95d223943460ba606efe24b338a7c4eb"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -152,12 +152,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/kwdwieland`), ``)
+  pathname = pathname.replace(new RegExp(`^`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/kwdwieland/app-146cc2bd8db990ea5363.js`))) {
+  if (!resources || !(await caches.match(`/app-70c8e6dd5e28a3daa8ae.js`))) {
     return await fetch(event.request)
   }
 
@@ -170,7 +170,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/kwdwieland/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
